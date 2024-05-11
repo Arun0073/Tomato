@@ -2,32 +2,35 @@ import React, { useContext } from "react";
 import "./FoodItem.css";
 import { assets } from "../../assets/assets";
 import { StoreContext } from "../../Context/StoreContext";
+import toast,{Toaster} from 'react-hot-toast'
+
 
 const FoodItem = ({ id, price, name, image, description }) => {
-  const { cartItems, addToCart, remFromCart,url } = useContext(StoreContext);
+  const { cartItems, addToCart, remFromCart, url } = useContext(StoreContext);
   return (
     <div className="food-item">
       <div className="food-img-container">
-        <img className="food-item-image" src={url+"/images/"+image} alt="" />
+        <img
+          className="food-item-image"
+          src={url + "/images/" + image}
+          alt=""
+        />
         {!cartItems[id] ? (
-          <img
-            className="add"
-            onClick={() => addToCart(id)}
-            src={assets.add_icon_green}
-          />
+          <button className="add" onClick={() => {addToCart(id); toast.success("Added to Cart!")}}>
+            <img src={assets.add_icon_green} alt="" />
+            <Toaster
+              background="transparent"
+            />
+          </button>
         ) : (
           <div className="food-item-counter">
-            <img
-              onClick={() => remFromCart(id)}
-              src={assets.remove_icon_red}
-              alt=""
-            />
+            <button onClick={() => {remFromCart(id); toast.error("Removed from Cart!")}}>
+              <img src={assets.remove_icon_red} alt="" />
+            </button>
             <p>{cartItems[id]}</p>
-            <img
-              onClick={() => addToCart(id)}
-              src={assets.add_icon_green}
-              alt=""
-            />
+            <button onClick={() => {addToCart(id); toast.success("Added to Cart!")}}>
+              <img src={assets.add_icon_green} alt="" />
+            </button>
           </div>
         )}
       </div>

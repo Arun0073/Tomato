@@ -42,6 +42,9 @@
 .food-img-container .add{
     width: 35px;
     position: absolute;
+    outline: none;
+    border: none;
+    background: transparent;
     bottom: 15px;
     right: 15px;
     cursor: pointer;
@@ -58,6 +61,10 @@
     padding: 6px;
     background-color: white;
 }
+.food-item-counter button{
+    border: none;
+    background: transparent;
+}
 .food-item-counter img{
-    width: 30px;
+    width: 35px;
 }
