@@ -7,7 +7,7 @@ const stripe = new Stripe(process.env.STRIPE_SECRET_KEY);
 //placing orders
 const placeOrder = async (req, res) => {
 
-    const frontUrl="http://localhost:5173"
+    const frontUrl="https://tomato-frontend-nvhd.onrender.com"
   try {
     const newOrder = new orderModel({
       userId: req.body.userId,
